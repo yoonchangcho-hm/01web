@@ -1,0 +1,28 @@
+menu 20px
+slide main title 80px
+slide sub title 24px
+
+
+
+contents title 44px
+
+title1 44px
+title2 28px
+title3 24px
+title4 21px
+
+
+menu 20px
+text1 18px
+text2 15px
+text3 14px
+
+text3 12px
+text4 11px
+
+
+footer
+text4 12px
+text5 11px
+
+button 14px

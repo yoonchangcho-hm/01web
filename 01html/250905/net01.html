@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container wrap">
+        <h1>
+          <a href="#"><img src="img/logo.png" alt="넷마블재단" /></a>
+        </h1>
+        <nav class="menuWrap">
+          <ul>
+            <li><a href="#" class="navMenu">자기소개</a></li>
+            <li><a href="#" class="navMenu">재단활동</a></li>
+            <li><a href="#" class="navMenu">재단소식</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <!-- slide1 -->
+          <div class="swiper-slide slide bgimg1">
+            <div class="textWrap">
+              <h2 class="title">게임소통학교</h2>
+              <h2 class="sub">게임으로 소통하고 게임으로 가까워지는 가족</h2>
+            </div>
+          </div>
+          <!-- slide2 -->
+          <div class="swiper-slide slide bgimg2">
+            <div class="textWrap">
+              <h2 class="title">전국 장애학생<br />e페스티벌</h2>
+              <h2 class="sub">게임 안에서 하나 되는 모두의 축제</h2>
+            </div>
+          </div>
+          <!-- slide3 -->
+          <div class="swiper-slide slide bgimg3">
+            <div class="textWrap">
+              <h2 class="title">견학프로그램</h2>
+              <h2 class="sub">나의 게임 산업 탐방기</h2>
+            </div>
+          </div>
+          <!-- slide4 -->
+          <div class="swiper-slide slide bgimg4">
+            <div class="textWrap">
+              <h2 class="title">게임아카데미</h2>
+              <h2 class="sub">미래의 꿈 게임에 담다</h2>
+            </div>
+          </div>
+          <!-- slide5 -->
+          <div class="swiper-slide slide bgimg5">
+            <div class="textWrap">
+              <h2 class="title">어꺠동무문고</h2>
+              <h2 class="sub">다름을 이해하는 모두의 동화</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="btnWrap">
+        <span class="viewFra"> 번호 </span>
+        <button class="prevBtn">prev</button>
+        <button class="nextBtn">next</button>
+      </div>
+    </div>
+    </div>
+    <div>
+      <div class="container">
+        <div class="contWrap01">
+          <div class="h3Wrap">
+            <h3 class="tit">
+              문화를 만들고 인재를 키우고<br />
+              마음을 나눕니다
+            </h3>
+          </div>
+          <p class="tit" style="padding-left: 624px">
+            넷마블문화재단은 문화적 가치 확산을 통해 우리 사회의 미래 경쟁력을
+            높여 가고자<br />
+            다양한 공익 활동을 전개해 나가고 있습니다.
+          </p>
+        </div>
+        <div class="contWrap02">
+          <ul>
+            <li class="card c1">
+              <img src="img/card01.jpg" alt="" />
+              <div class="ctb">
+                <h6 class="tit">문화만들기</h6>
+                <p class="txt2">
+                  게임을 기반으로 다양한 문화적 가치를 공유하고 누구나<br />
+                  즐겁게 참여할 수 있는 교육 및 여가 문화를 만들어 갑니다.
+                </p>
+              </div>
+            </li>
+            <li class="card c2">
+              <img src="img/card02.jpg" alt="" />
+              <div class="ctb">
+                <h6 class="tit">인재 키우기</h6>
+                <p class="txt2">
+                  미래 문화 산업을 이끌어 갈 가능성 있는 인재들을 발굴하는<br />
+                  체계적인 성장 기회를 지원합니다.
+                </p>
+              </div>
+            </li>
+            <li class="card c3">
+              <img src="img/card03.jpg" alt="" />
+              <div class="ctb">
+                <h6 class="tit">마음 나누기</h6>
+                <p class="txt2">
+                  나눔이 가진 영향력과 가치를 알리고 쉽게 동참할 수 있는<br />
+                  기회를 제공하여 모두가 즐거운 나눔 문화를 확산해 갑니다.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="contWrap03">
+          <div class="txtbox">
+            <h4 class="tit">
+              우리는 문화적 가치를 확산하여 우리 사회의 미래 경쟁력을
+              높여갑니다.
+            </h4>
+            <div style="margin: 24px">주요목적</div>
+            <img src="img/tboximg.jpg" />
+          </div>
+        </div>
+        <div class="noticeWrap">
+          <div class="title"></div>
+          <div class="menu"></div>
+          <div class="card"></div>
+        </div>
+      </div>
+    
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      //   var swiper = //
+      new Swiper('.mySwiper', {
+        loop: true,
+        navigation: {
+          nextEl: '.nextBtn',
+          prevEl: '.prevBtn',
+        },
+        pagination: {
+          el: '.viewFra',
+          type: 'fraction',
+        },
+      });
+    </script>
+  </body>
+</html>

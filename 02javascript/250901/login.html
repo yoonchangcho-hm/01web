@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var id, password;
+            id = prompt('아이디입력');
+            if (id == 'admin') {
+                password = prompt('1234');
+                if (password == '1234') {
+                    console.log('당신은 관리자');
+                    document.write('당신은 관리자');
+                }
+            } else {
+                console.log('나가주세요');
+                document.write('당신은 관리자');
+            }
+        </script>
+    </body>
+</html>

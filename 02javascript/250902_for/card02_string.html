@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="css/reset.css" />
+        <style>
+            .card {
+                width: 390px;
+                /* background-color: pink; */
+            }
+            .card img {
+                width: 100%;
+            }
+            .card .card-body {
+                padding: 16px;
+            }
+            .contWrap {
+                width: 1200px;
+                background: pink;
+                display: flex;
+                justify-content: space-between;
+                margin: auto;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contWrap" id="container">
+            <!-- <div class='card'>
+                <img src='img/img (1).png' />
+                <div class='card-body'>
+                    <h3>Lorem, ipsum dolor.</h3>
+                </div>
+            </div> -->
+            <script>
+                // view = [1,2,3,]
+                // view = [{},{},{}]
+                // view = [{title:"test",view:"test1"},{},{}]  // {key:value,key:value,key:value}
+
+                var vData = [
+                    {
+                        imgUrl: 'img (1).png',
+                        title: '찾아가는 학교교육1',
+                        stitle: '아동청소년대상',
+                    },
+                    {
+                        imgUrl: 'img (2).png',
+                        title: '찾아가는 학교교육2',
+                        stitle: '아동청소년대상',
+                    },
+                    {
+                        imgUrl: 'img (3).png',
+                        title: '찾아가는 학교교육3',
+                        stitle: '아동청소년대상',
+                    },
+                    {
+                        imgUrl: 'img (1).png',
+                        title: '찾아가는 학교교육1',
+                        stitle: '아동청소년대상',
+                    },
+                    {
+                        imgUrl: 'img (2).png',
+                        title: '찾아가는 학교교육2',
+                        stitle: '아동청소년대상',
+                    },
+                    {
+                        imgUrl: 'img (3).png',
+                        title: '찾아가는 학교교육3',
+                        stitle: '아동청소년대상',
+                    },
+                ];
+                // var sum = 0;
+                // for (var i = 1; i < 11; i++) {
+                //     // sum = sum + i;
+                //     // sum += i;
+                //     // var sum = 0;
+                //     sum = sum + i;
+                //     consol.log(sum);
+                // }
+                // document.write('total : ' + sum); //55
+
+                // var str = '';
+                // for (var i = 0; i < 10; i++) {
+                //     str = str + i;
+                //     // "0" = "" +0;
+                //     // "01" = "0" +  1
+                // }
+                // document.write(str);
+
+                var htmlstring = '';
+                for (var i = 0; i < vData.length; i++) {
+                    htmlstring += "<div class='card'>";
+                    htmlstring += "<img src='img/" + vData[i].imgUrl + "' />";
+                    htmlstring += "<div class='card-body'>";
+                    htmlstring += '<h3>' + vDate[i].title + '</h3>';
+                    htmlstring += '</div>';
+                    htmlstring += '</div>';
+                }
+                // document.write(htmlstring);
+
+                // #container 선택해서 htmlstring을 insert해야함
+
+                document.getElementById('container').innerHTML = htmlstring;
+            </script>
+        </div>
+    </body>
+</html>

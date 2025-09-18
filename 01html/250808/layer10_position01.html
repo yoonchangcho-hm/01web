@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, 
+        body {
+            height: 100%;
+        }
+        body {
+        background: #ededed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+        .container {
+            position: relative;
+            width: 1000px;
+            height: 400px;
+            /* background: skyblue; */
+            margin: auto;
+            /* overflow: hidden; */
+        }
+        .contWrap {
+            width: 800px;
+            background: yellow;
+            padding: 50px;
+        }
+        .contWrap h3 {
+            margin-bottom: 20px;
+        }
+        .contWrap button {
+            border: 0 none;
+            background: #9e9e0e;
+            padding: 5px 20px;
+            color: white;
+            border-radius: 30px;
+        }
+        .container img {
+            width: 400px;
+            display: block;
+        }
+        .container .img01 {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.3)
+        }
+         .container .img02 {
+            position: absolute;
+            right: 180px;
+            bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contWrap">
+            <h3>
+            Lorem ipsum dolor sit amet consectetur<br />
+            adipisicing elit. Aperiam, doloribus.
+        </h3>
+        <button>주요목적</button>
+    </div>
+    <img src="banner0102.png" alt="" class="img02">
+    <img src="banner0101.png" alt="" class="img01">
+    </div>
+</body>
+</html>

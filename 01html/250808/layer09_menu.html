@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+/>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    img {
+        display: block;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+    .headerWrap {
+        width: 100%;
+        background: white;
+        position: fixed;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    }
+    .header {
+        width: 1000px;
+        display: flex;
+        margin: auto;
+        /* background: pink; */
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .menuWrap {
+        display: flex;
+        width: 500px;
+        /* background: blue; */
+        justify-content: space-between;
+    }
+    .iconWrap {
+        display: flex;
+        width: 120px;
+        justify-content: space-between;
+    }
+    .iconWrap > .icon {
+        width: 30px;
+        height: 30px;
+        /* background: greenyellow; */
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #000;
+    }
+    .visual {
+        height: 500px;
+        /* background: skyblue; */
+        /* background-image: url(visual_img01.png);
+        background-color: pink;
+        background-repeat: no-repeat; */
+        /* background-repeat: repeat-x; */
+        /* background-position: 30px -100px; */
+        /* background-position: right bottom; */
+        /* background-position: center;
+        background-size: cover; */
+        background: black url(visual_img01.png) no-repeat center;
+        background-size: cover;
+        /* display: flex; */
+        /* justify-content: flex-start;
+        align-items: stretch; */
+        /* justify-content: center;
+        align-items: center; */
+        padding-top: 100px;
+        margin-bottom: 28px;
+    }
+    .visual .titleWrap {
+        width: 1000px;
+        height: 200px;
+        margin: auto;
+        /* background-color: pink; */
+        margin: 20px auto;
+    }
+    .titleWrap h5 {
+        margin-bottom: 10px;
+    }
+    .titleWrap button {
+        padding:  5px  16px;
+        border: 0  none;
+        background: rgb(0, 0, 0);
+        border-radius: 10px;
+        font-size: 14px;
+        color: white;
+    }
+    /* content */
+    .content {
+        width: 1000px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    .content > h4 {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+    .content .cardWrap {
+        display: flex;
+        justify-content: space-between;
+    }
+    .content .cardWrap .card{
+        width: 235px;
+        background: pink;
+        border-radius: 10px;
+        overflow: hidden;       
+    }
+    .content .cardWrap .card img {
+        display: block;
+        width: 100%;
+    }
+    .content .cardWrap .card .card-body {
+        background: gray;
+        padding:  10px 16px 16px 16px;
+    }
+    /* online */
+    .online {
+        height: 300px;
+        background-image: url(online_bg.png);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .online .textWrap {
+        text-align: center;
+    }
+    .online .textWrap p {
+        margin-bottom: 20px;
+    }
+    .online .textWrap h3 {
+        text-shadow: 0 0 10px rgb(255, 255, 255);
+    }
+    .online .textWrap button {
+        padding:  16px  32px;
+        border: 0  none;
+        background: rgb(4, 40, 54);
+        border-radius: 10px;
+        font-size: 16px;
+        color: white;
+    }
+    .content .item {
+        display: flex
+    }
+    .content .item .first {
+        width: 700px;
+        display: flex;
+        /* flex-direction: column;
+        justify-content: center; */
+        justify-content: center;
+        flex-direction: column;
+    }
+    .content .item .first h5 {
+        margin-bottom: 16px;
+    }
+    .content .item .first h3 {
+        margin-bottom: 16px;
+    }
+    .content .item .first .btn {
+        /* background: skyblue;
+        border: 1px solid #000; */
+        width: 150px;
+        /* height: 70px; */
+        background: #333;
+        padding: 10px 20px;
+        text-align: center;
+        border-radius: 30px;
+        color: white;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+    }
+    .content .item .second {
+        width: 300px;
+        border-radius: 150px;
+        overflow: hidden;
+    }
+
+    /* common */
+    .py-20 {
+        padding: 20px 0 0 !important;
+    }
+    .py-36 {
+        padding: 36px 0 0 !important;
+    }
+    .mb-20 {
+        margin-bottom: 20px !important;
+    }
+</style>
+</head>
+<body>
+    <!-- header -->
+     <div class="headerWrap">
+         <div class="header">
+             <img src="logo01.png" alt="">  
+             <div class="menuWrap">
+                 <div class="menu">HOME</div>
+                 <div class="menu">COMPANY</div>
+                 <div class="menu">PRODUCT</div>
+                 <div class="menu">ONLINE</div>
+                 <div class="menu">COMMUNITY</div>
+             </div>
+             <div class="iconWrap">
+                  <div class="icon">
+                 <i class="fa-solid fa-user"></i>
+                 <!-- <i class="fa-solid fa-magnifying-glass"></i>
+                 <i class="fa-solid fa-bars"></i> -->
+                 </div>
+                 <div class="icon">
+                 <i class="fa-solid fa-magnifying-glass"></i>
+                 </div>
+                 <div class="icon">
+                 <i class="fa-solid fa-bars"></i>
+                 </div>
+             </div>     
+         </div>
+     </div>
+
+    <!-- visual -->
+    <div class="visual">
+        <div class="titleWrap">
+            <h3>Lorem, ipsum dolor.</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, quos.
+            </p>
+            <h5>Lorem ipsum dolor sit amet.</h5>
+            <button>MORE</button>
+        </div>
+    </div>
+
+
+    <!-- content -->
+    <div class="content">
+        <h4>Lorem, ipsum dolor.</h4>
+        <div class="cardWrap">
+            <div class="card">
+                <img src="banner0101.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="banner0101.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="banner0101.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="banner0101.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="online">
+        <div class="textWrap">
+            <h3>Lorem ipsum dolor </h3>
+            <p>
+              sit amet consectetur adipisicing elit. Repellat at fugit odio
+            </p>
+            <button>ONLINE</button>
+        </div>
+    </div>
+    <div class="content py-36">
+        <div class="item mb-20">
+            <div class="first">
+                <h5>사업모델 개발</h5>
+                <h3>
+                    실질적인 사회문제 해결을 위해<br>다양한 사업모델을 개발합니다.
+                </h3>
+                <div class="btn">더 알아보기</div>
+            </div>
+            <div class="second">
+                <img src="bImg01.png" alt="">
+            </div>
+        </div>
+        <div class="item">
+            <div class="second">
+                <img src="bImg01.png" alt="">
+            </div>
+            <div class="first" style="align-items: flex-end;">
+                <h5>사업모델 개발</h5>
+                <h3>
+                    실질적인 사회문제 해결을 위해<br>다양한 사업모델을 개발합니다.
+                </h3>
+                <div class="btn">더 알아보기</div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+
+    <div class="footer py-20" style="background-color: #555;" >
+    
+    </div>
+</body>
+</html>

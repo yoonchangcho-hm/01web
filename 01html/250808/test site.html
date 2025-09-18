@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+/>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .header {
+        width: 1000px;
+        display: flex;
+        margin: 10px auto;
+        justify-content:  space-between;
+        align-items: center;
+    }
+    .menuWrep {
+        display: flex;
+        width: 500px;
+        justify-content: space-between;
+    }
+    .iconWrep {
+        display: flex;
+        width: 120px;
+        justify-content: space-between;
+    }
+    .iconWrep >.icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #000;
+    }
+    .visual {
+        height: 500px;
+        /* background: skyblue; */
+        background: #000 url(bgimgsky.png) no-repeat center;
+        background-size: cover;
+        padding-top: 100px;
+        margin-bottom: 28px;
+    }
+    .visual .titleWrap {
+        width: 1000px;
+        margin: auto;
+        height: 200px;
+    }
+    .titleWrap h5 {
+        margin-bottom: 10px;
+    }
+    .titleWrap button {
+        padding: 5px 16px;
+        border: 0 none;
+        background-color: #50c5f0;
+        border-radius: 10px;
+        font-size: 14px;
+        color: white;
+    }
+    .contect {
+       margin: 100px;
+       font-size: 30px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+
+    /* content */
+    .content {
+        width: 1000px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    .content > h4 {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+</style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo01.png" alt="">
+        <div class="menuWrep">
+            <div class="menu">HOME</div>
+            <div class="menu">COMPANY</div>
+            <div class="menu">PRODUCT</div>
+            <div class="menu">ONLINE</div>
+            <div class="menu">COMMUNITY</div>
+        </div>
+        <div class="iconWrep">
+            <div class="icon">
+                  <i class="fa-solid fa-user"></i>   
+            </div>
+            <div class="icon">   
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="icon">   
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </div>
+    <div class="visual">
+        <div class="titleWrap">
+            <h3>Lorem, ipsum dolor.</h3>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati, libero illum? 
+            </p>
+            <h5>Lorem ipsum dolor sit amet.</h5>
+            <button>MORE</button>
+        </div>
+    </div>
+    <div class="contect">
+        <p>.</p>
+    </div>
+    </div>
+    
+    <!-- content -->
+    <div class="content">
+        <h4>Lorem, ipsum dolor.</h4>
+        <div class="cardWap">
+            <div class="card">
+                <img src="sky.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>                    
+                </div>
+            </div>
+            <div class="card">
+                <img src="sky.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>                    
+                </div>
+            </div>
+            <div class="card">
+                <img src="sky.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>                    
+                </div>
+            </div>
+            <div class="card">
+                <img src="sky.png" alt="">
+                <div class="card-body">
+                    <h4>Lorem, ipsum dolor.</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>                    
+                </div>
+            </div>
+        </div>
+    </div>    
+
+</body>
+</html>

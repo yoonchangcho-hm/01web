@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0; 
+        box-sizing: border-box;
+    }
+    html,
+    body {
+        height: 100%;
+    }
+    body {
+        background-image: url(dot01.jpg);
+        /* background-repeat: no-repeat; */
+        height: 300%;
+    }
+    div {
+        background: green;
+    }
+    .box {
+        width: 100px;
+        height: 100px;
+        background: skyblue;
+    }
+    .bg-red {
+        background: red !important;
+        position: relative;
+        left: -50PX;
+        top: 50px;  
+        z-index: 2;     
+    }
+    .bg-blue {
+        background: blue !important;
+        position: relative;
+        z-index: 1;
+        margin-left: auto;
+        right: 100px;
+        /* left: 0px; */
+    }
+    .move {
+        width: 100px;
+        height: 100px;
+        background: pink;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* position: absolute; */
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+    }
+
+    /* 
+    *(0) < tag(1) < class(10) < id(100) < inline < !importhant
+    */
+    </style>
+</head>
+<body>
+    <div class="box bg-red"></div>
+    <div class="box bg-blue"></div>
+    <div class="box"></div>
+    <div class="move">TOP</div>
+</body>
+</html>

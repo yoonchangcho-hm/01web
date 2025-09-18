@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="css/reset.css" />
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .diceWrap {
+                width: 100px;
+                height: 100px;
+                background: pink;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid red;
+                /* left: 50%;
+                            top: 50%;
+                            margin-left: -50%;
+                            margin-top: 50%; */
+            }
+            .circle {
+                width: 15px;
+                height: 15px;
+                background: red;
+                border-radius: 8px;
+                position: absolute;
+            }
+            .circle.trans21,
+            .circle.trans31 {
+                transform: translate(20px, 20px);
+            }
+            .circle.trans22,
+            .circle.trans33 {
+                transform: translate(-20px, -20px);
+            }
+            .circle.trans41 {
+                transform: translate(20px, -20px);
+            }
+            .circle.trans42 {
+                transform: translate(-20px, 20px);
+            }
+            .circle.trans61 {
+                transform: translate(-25px, -25px);
+            }
+            .circle.trans62 {
+                transform: translate(25px, 25px);
+            }
+            .circle.trans63 {
+                transform: translate(-25px, 25px);
+            }
+            .circle.trans64 {
+                transform: translate(25px, -25px);
+            }
+            .circle.trans65 {
+                transform: translate(25px, 0);
+            }
+            .circle.trans66 {
+                transform: translate(-25px, 0);
+            }
+            .loc6 {
+                transform: translate(100px, 0);
+            }
+            .loc4 {
+                transform: translate(0, 100px);
+            }
+            .loc1 {
+                transform: translate(-100px, 0);
+            }
+            .loc3 {
+                transform: translate(0px, -100px);
+            }
+            .loc5 {
+                transform: translate(0px, -200px);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="diceWrap loc1">
+            <div class="circle"></div>
+        </div>
+        <div class="diceWrap loc2">
+            <div class="circle trans21"></div>
+            <div class="circle trans22"></div>
+        </div>
+        <div class="diceWrap loc3">
+            <div class="circle trans31"></div>
+            <div class="circle trans32"></div>
+            <div class="circle trans33"></div>
+        </div>
+        <div class="diceWrap loc4">
+            <div class="circle trans21"></div>
+            <div class="circle trans22"></div>
+            <div class="circle trans41"></div>
+            <div class="circle trans42"></div>
+            <!-- <div class="circle trans43"></div> -->
+            <!-- <div class="circle trans43"></div> -->
+        </div>
+        <div class="diceWrap loc5">
+            <div class="circle"></div>
+            <div class="circle trans21"></div>
+            <div class="circle trans22"></div>
+            <div class="circle trans41"></div>
+            <div class="circle trans42"></div>
+        </div>
+        <div class="diceWrap loc6">
+            <div class="circle trans61"></div>
+            <div class="circle trans62"></div>
+            <div class="circle trans63"></div>
+            <div class="circle trans64"></div>
+            <div class="circle trans65"></div>
+            <div class="circle trans66"></div>
+        </div>
+    </body>
+</html>
