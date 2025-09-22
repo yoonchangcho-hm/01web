@@ -25,6 +25,9 @@
         margin: 0;
         padding: 0;
       }
+      .inpMoBtn {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -41,7 +44,7 @@
           <button class="btn btn-primary inpBtn" style="width: 100px">
             입력
           </button>
-          <button class="btn btn-danger inpMoBtn d-none" style="width: 100px">
+          <button class="btn btn-danger inpMoBtn" style="width: 100px">
             수정
           </button>
         </div>
@@ -68,6 +71,7 @@
           </ul>
         </div>
       </div>
+
       <div class="row px-3">
         <div class="col-md-6 offset-md-3">
           <div class="btn btn-danger d-block dellAll">전체삭제</div>
@@ -113,6 +117,7 @@
       const viewDataElem = document.querySelector('.viewList');
       const inpElem = document.querySelector('.inp'); //value
       const btnElem = document.querySelector('.inpBtn'); // event
+      const btnMoElem = document.querySelector('.inpMoBtn'); // event
 
       //create
       btnElem.addEventListener('click', function () {
@@ -124,6 +129,16 @@
         } else {
           alert('오늘의 할 일을 입력하세요');
         }
+      });
+
+      //modify
+      btnMoElem.addEventListener('click', function () {
+        alert('진짜 수정!');
+
+        //1 버튼이 입력으로 변경
+        btnElem.style.display = 'block';
+        btnMoElem.style.display = 'none';
+        inpElem.value = '';
       });
 
       //function
@@ -148,7 +163,7 @@
           }
 
           viewData += `  
-                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-pen" onclick="modi(${i},'${listView[i].todo}')"></i>
                         <i class="fa-solid fa-trash" onclick="del(${i})"></i>
                     </div>
                     </li>
@@ -179,6 +194,13 @@
       function done(index) {
         listView[index].done = !listView[index].done;
         viewData();
+      }
+
+      function modi(index, todo) {
+        // alert('수정' + todo);
+        inpElem.value = todo;
+        btnElem.style.display = 'none';
+        btnMoElem.style.display = 'block';
       }
     </script>
   </body>
