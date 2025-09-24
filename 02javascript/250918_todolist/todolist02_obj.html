@@ -90,7 +90,7 @@
     <script>
       /*
         1. 입력, 리스트, 체크, 수정, 삭제, 전체삭제 ->crud
-        2. 디자인 -> 선택자(dom) 찾기 -> 저장소(설계)/샘플데이터생성
+        2. 디자인 -> 선택자(dom) 찾기 -> 저장소(설계)/샘플데이터생성 -> for문
 
         */
 
@@ -127,6 +127,11 @@
         if (inpElem.value != '') {
           let value = { todo: inpElem.value, done: false }; //초기값
           listView.push(value);
+
+          // localstorage update
+          let valueData = JSON.stringify(listView);
+          localStorage.setItem('todoData', valueData);
+
           inpElem.value = '';
           viewData();
         } else {
@@ -150,6 +155,12 @@
       //function
       //read
       function viewData() {
+        // localstorage
+        if (localStorage.length > 0) {
+          let lcalData = localStorage.getItem('todoData');
+          listView = JSON.parse(lcalData);
+        }
+
         let viewData = '';
         listView.forEach(function (item, i) {
           viewData += `    
@@ -216,6 +227,7 @@
       - done:true 이면 글자, 글자를 text-decoration:line-through
       - done:false 원상복구
       - 수정시 취소버튼 추가
+      - done 체크, todo title 수정, todo 삭제, 전체삭제, localStorage 반영
       */
     </script>
   </body>
