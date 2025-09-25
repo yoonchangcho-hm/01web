@@ -92,32 +92,34 @@
         1. 입력, 리스트, 체크, 수정, 삭제, 전체삭제 ->crud
         2. 디자인 -> 선택자(dom) 찾기 -> 저장소(설계)/샘플데이터생성 -> for문
 
+
         */
 
-      // let listView = [
+      //   let listView = [
       //     {
-      //         todo:"자바",
-      //         done:false,
+      //         index:0,
+      //       todo: '자바1111',
+      //       done: false,
       //     },
       //     {
-      //         todo:"자바스크립트",
-      //         done:false,
+      //       todo: '자바스크립트',
+      //       done: false,
       //     },
       //     {
-      //         todo:"도커",
-      //         done:true,
+      //       todo: '도커',
+      //       done: true,
       //     },
       //     {
-      //         todo:"mysql",
-      //         done:true,
+      //       todo: 'mysql',
+      //       done: true,
       //     },
-      // ];
+      //   ];
 
       let listView = [];
 
       //dom
       const viewDataElem = document.querySelector('.viewList');
-      const inpElem = document.querySelector('.inp'); //value
+      const inpElem = document.querySelector('.inp'); // value
       const inpNumElem = document.querySelector('.numInp');
       const btnElem = document.querySelector('.inpBtn'); // event
       const btnMoElem = document.querySelector('.inpMoBtn'); // event
@@ -141,11 +143,11 @@
 
       //modify
       btnMoElem.addEventListener('click', function () {
-        // alert('진짜 수정!');
+        // alert('진짜수정!');
 
         listView[inpNumElem.value].todo = inpElem.value;
 
-        //1 버튼이 입력으로 변경
+        //1 버튼 입력으로 변경
         btnElem.style.display = 'block';
         btnMoElem.style.display = 'none';
         inpElem.value = '';
@@ -163,28 +165,27 @@
 
         let viewData = '';
         listView.forEach(function (item, i) {
-          viewData += `    
-                   <li class="d-flex justify-content-between py-3">
-                   <div>${item.todo}</div>
-                   <div class="d-flex gap-3">`;
-
-          // if(item.done){
-          //   viewData += `<i class="fa-solid fa-square-check" onclick="noDone(${i})"></i>`;
-          // } else {
-          //   viewData += `<i class="fa-solid fa-square" onclick="yesDone(${i})></i>`;
-          // }
+          viewData += `
+                <li class="d-flex justify-content-between py-3">
+                <div>${item.todo}</div>
+                <div class="d-flex gap-3">`;
+          //   if (item.done) {
+          //     viewData += `<i class="fa-solid fa-square-check " onclick="noDone(${i})"></i>`;
+          //   } else {
+          //     viewData += `<i class="fa-solid fa-square"  onclick="yesDone(${i})"></i>`;
+          //   }
           if (item.done) {
-            viewData += `<i class="fa-solid fa-square-check" onclick="done(${i})"></i>`;
+            viewData += `<i class="fa-solid fa-square-check " onclick="done(${i})"></i>`;
           } else {
-            viewData += `<i class="fa-solid fa-square" onclick="done(${i})"></i>`;
+            viewData += `<i class="fa-solid fa-square"  onclick="done(${i})"></i>`;
           }
-
-          viewData += `  
-                        <i class="fa-solid fa-pen" onclick="modi(${i},'${listView[i].todo}')"></i>
-                        <i class="fa-solid fa-trash" onclick="del(${i})"></i>
-                    </div>
-                    </li>
-                `;
+          viewData += `
+                    
+                    <i class="fa-solid fa-pen" onclick="modi(${i},'${listView[i].todo}')"></i>
+                    <i class="fa-solid fa-trash" onclick="del(${i})"></i>
+                </div>
+                </li>
+            `;
         });
         viewDataElem.innerHTML = viewData;
       }
@@ -226,7 +227,7 @@
       - done:true 이면 수정, 삭제금지
       - done:true 이면 글자, 글자를 text-decoration:line-through
       - done:false 원상복구
-      - 수정시 취소버튼 추가
+      - 수정시 취소번튼 추가
       - done 체크, todo title 수정, todo 삭제, 전체삭제, localStorage 반영
       */
     </script>
