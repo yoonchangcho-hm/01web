@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fn1(number) {
+        const promise = new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            reject(number);
+          }, 1000);
+        });
+        return promise;
+      }
+      // fn1(1000).then(function (num) {
+      //   console.log(num);
+      // });
+
+      async function test() {
+        console.log('start');
+
+        try {
+          let time = await fn1(1000);
+          console.log(time);
+        } catch (error) {
+          console.error('에러');
+        }
+
+        // console.log(time);
+
+        // console.log('center');
+        // time = await fn1(time + 1000);
+        // console.log(time);
+        // console.log('end');
+      }
+      test();
+    </script>
+  </body>
+</html>
