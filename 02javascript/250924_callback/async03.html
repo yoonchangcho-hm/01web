@@ -7,6 +7,7 @@
   </head>
   <body>
     <div class="title"></div>
+    <div class="id"></div>
     <script>
       let mydata; //object data
       async function getPost() {
@@ -16,7 +17,8 @@
         const data = await response.json();
         console.log(data);
         mydata = data;
-        document.querySelector('.title').innerHTML = mydata[2].title;
+        document.querySelector('.title').innerHTML = mydata[3].title;
+        document.querySelector('.id').innerHTML = mydata[3].userId;
       }
       getPost();
     </script>
