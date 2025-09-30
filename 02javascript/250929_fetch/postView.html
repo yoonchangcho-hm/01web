@@ -22,8 +22,9 @@
     <div class="container">
       <h3>글내용보기</h3>
       <hr />
-      <div>Number : <span class="title"></span></div>
-      <div>이름 : <span class="name"></span> / <span class="email"></span></div>
+      <div>Number : <span class="num"></span></div>
+      <div>이름 : <span class="name"></span></div>
+      <div>이메일 : <span class="email"></span></div>
       <div>타이틀 : <span class="title"></span></div>
       <div>
         <p>글내용</p>
@@ -46,6 +47,8 @@
 
         console.log(viewData.data);
         document.querySelector('.num').innerHTML = viewData.data.id;
+        document.querySelector('.name').innerHTML = viewData.data.name;
+        document.querySelector('.email').innerHTML = viewData.data.email;
         document.querySelector('.title').innerHTML = viewData.data.title;
         document.querySelector('.content').innerHTML = viewData.data.body;
       }
