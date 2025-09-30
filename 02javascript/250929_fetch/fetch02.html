@@ -25,7 +25,7 @@
       <hr />
 
       <ul class="viewList">
-        <li class="d-flex flex-column flex-md-row justify-content-between">
+        <!-- <li class="d-flex flex-column flex-md-row justify-content-between">
           <div class="d-flex gap-2">
             <div>1</div>
             <div>제목</div>
@@ -35,7 +35,7 @@
             <div>test.@naver.com</div>
           </div>
         </li>
-        <li><hr /></li>
+        <li><hr /></li> -->
       </ul>
       <div class="d-flex justify-content-end">
         <div class="btn btn-primary">글쓰기</div>
@@ -76,7 +76,7 @@
           viewData += `<li class="d-flex flex-column flex-md-row justify-content-between">
           <div class="d-flex gap-2">
             <div>${post.id}</div>
-            <div>${post.title}</div>
+            <div><a href="postView.html?id=${post.id}&name=${user.name}">${post.title}</a></div>
           </div>
           <div class="d-flex align-self-end gap-2">
             <div>${user.name}</div>
