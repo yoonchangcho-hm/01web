@@ -17,13 +17,15 @@
         try {
           //   const res = await axios.get('', {});
           const res = await axios.get(
-            `https://dapi.kakao.com/v2/search/web?query=${query}`,
+            `https://dapi.kakao.com/v2/search/web?query=${query}&size=50`,
+            // `https://dapi.kakao.com/v2/search/web`
             {
               headers: {
                 Authorization: 'KakaoAK 8c75c94f88eb5e016627a0c69ca13924',
               },
               // params: {
               //   query: query,
+              //   size: 50,
               // },
             }
           );

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/axios.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+      }
+      .wrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-3">
+      <h1 class="mb-3 text-center">카카오 검색</h1>
+      <div class="row">
+        <div class="offset-md-3 col-md-6">
+          <form id="searchform" class="d-flex gap-2 mb-3">
+            <input
+              type="text"
+              name="search"
+              class="form-control search"
+              placeholder="검색어를 입력하세요"
+            />
+            <button class="btn btn-primary" style="width: 100px">검색</button>
+          </form>
+          <div id="results" class="list-group">
+            <ul>
+              <li>
+                <h4>
+                  <a href="#" class="nav-link wrap"
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Deserunt, suscipit.</a
+                  >
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Deleniti quis soluta repellendus cupiditate rerum nesciunt,
+                  at, deserunt provident, incidunt itaque voluptates! Esse
+                  beatae quam aut natus totam at quis quasi.
+                </p>
+                <p class="d-flex justify-content-end small">
+                  <span>2025-09-15</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // document.getElementById("searchform").addEventListener("submit",function(){})
+      document
+        .getElementById('searchform')
+        .addEventListener('submit', async function (e) {
+          e.preventDefault();
+          //   alert('test');
+
+          const query = document.querySelector('.search').value.trim();
+          if (!query) {
+            alert('검색어를 입력하세요');
+          }
+          console.log(query);
+
+          try {
+            // const res = await axios.get('url',{ headers:{},params:{}})
+            const res = await axios.get(
+              'https://dapi.kakao.com/v2/search/web',
+              {
+                headers: {
+                  Authorization: 'KakaoAK 8c75c94f88eb5e016627a0c69ca13924',
+                },
+                params: {
+                  query: query,
+                },
+              }
+            );
+
+            //    console.log(res.data);
+
+            const data = res.data;
+
+            data.documents.forEach(function (item) {
+              console.log(item.title);
+            });
+          } catch (error) {}
+        });
+
+      async function kakaosearch(query) {
+        try {
+          //   const res = await axios.get('', {});
+          const res = await axios.get(
+            `https://dapi.kakao.com/v2/search/web?query=${query}&size=50`,
+            // `https://dapi.kakao.com/v2/search/web`
+            {
+              headers: {
+                Authorization: 'KakaoAK 8c75c94f88eb5e016627a0c69ca13924',
+              },
+              // params: {
+              //   query: query,
+              //   size: 50,
+              // },
+            }
+          );
+          console.log(res.data.documents);
+        } catch (error) {}
+      }
+      //    kakaosearch('손흥민');
+    </script>
+  </body>
+</html>
