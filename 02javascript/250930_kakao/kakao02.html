@@ -36,7 +36,7 @@
           <div id="results" class="list-group">
             <ul>
               <li>
-                <h4>
+                <!-- <h4>
                   <a href="#" class="nav-link wrap"
                     >Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Deserunt, suscipit.</a
@@ -47,7 +47,7 @@
                   Deleniti quis soluta repellendus cupiditate rerum nesciunt,
                   at, deserunt provident, incidunt itaque voluptates! Esse
                   beatae quam aut natus totam at quis quasi.
-                </p>
+                </p> -->
                 <p class="d-flex justify-content-end small">
                   <span>2025-09-15</span>
                 </p>
@@ -81,6 +81,7 @@
                 },
                 params: {
                   query: query,
+                  size: 3,
                 },
               }
             );
@@ -89,9 +90,29 @@
 
             const data = res.data;
 
+            let viewData = '';
             data.documents.forEach(function (item) {
-              console.log(item.title);
+              viewData += `
+                         <li>
+                           <h4>
+                           <a href="${
+                             item.url
+                           }" target="_blank" class="nav-link wrap">${
+                item.title
+              }</a>
+                            </h4>
+                           <p>
+                             ${item.contents}
+                           </p>
+                           <p class="d-flex justify-content-end small">
+                        <span>${item.datetime.split('T')[0]}</span>
+                           </p>
+                       </li>
+                       `;
             });
+            console.log(viewData);
+
+            document.querySelector('#results>ul').innerHTML = viewData;
           } catch (error) {}
         });
 
