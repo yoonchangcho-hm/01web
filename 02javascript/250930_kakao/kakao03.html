@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/axios.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+      }
+      .wrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-3">
+      <h1 class="mb-3 text-center">카카오 검색</h1>
+      <div class="row">
+        <div class="offset-md-3 col-md-6">
+          <form id="searchform" class="d-flex gap-2 mb-3">
+            <input
+              type="text"
+              name="search"
+              class="form-control search"
+              placeholder="검색어를 입력하세요"
+            />
+            <button class="btn btn-primary" style="width: 100px">검색</button>
+          </form>
+          <div id="results" class="list-group">
+            <ul>
+              <li class="text-center py-5 bg-info rounded text-white">
+                <!-- <h4>
+                  <a href="#" class="nav-link wrap"
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Deserunt, suscipit.</a
+                  >
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Deleniti quis soluta repellendus cupiditate rerum nesciunt,
+                  at, deserunt provident, incidunt itaque voluptates! Esse
+                  beatae quam aut natus totam at quis quasi.
+                </p> -->
+                <!-- <p class="d-flex justify-content-end small">
+                  <span>2025-09-15</span>
+                </p> -->
+                검색어를 입력하세요
+              </li>
+            </ul>
+          </div>
+          <nav class="d-flex justify-content-center">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link active" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <script>
+      // document.getElementById("searchform").addEventListener("submit",function(){})
+
+      let page = 1;
+      let listCnt = 3;
+      let pagerCnt = 5;
+      let totalRecord = 0; // kakao meta
+      let totalpage = 0;
+      let query = '';
+
+      document
+        .getElementById('searchform')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          //   alert('test');
+
+          const query = document.querySelector('.search').value.trim();
+          if (!query) {
+            alert('검색어를 입력하세요');
+          }
+          page = 1;
+          searchData(query, page);
+        });
+      async function searchData(query, page) {
+        console.log(query, page);
+        try {
+          // const res = await axios.get('url',{ headers:{},params:{}})
+          const { data } = await axios.get(
+            'https://dapi.kakao.com/v2/search/web',
+            {
+              headers: {
+                Authorization: 'KakaoAK 8c75c94f88eb5e016627a0c69ca13924',
+              },
+              params: {
+                query: query,
+                page: page,
+                size: listCnt,
+              },
+            }
+          );
+
+          console.log(data);
+
+          //    console.log(res.data);
+
+          // const data = res.data;
+
+          let viewData = '';
+          data.documents.forEach(function (item) {
+            viewData += `
+                            <li>
+                                <h4>
+                                 <a href="${
+                                   item.url
+                                 }" target="_blank" class="nav-link wrap"
+                                 >${item.title}</a
+                                 >
+                                </h4>
+                                 <p>
+                                   ${item.contents}
+                                 </p>
+                                 <p class="d-flex justify-content-end small">
+                                  <span>${item.datetime.split('T')[0]}</span>
+                                 </p>
+                             </li>
+                             `;
+          });
+          // console.log(viewData);
+
+          document.querySelector('#results>ul').innerHTML = viewData;
+
+          pagination(query, page);
+        } catch (error) {}
+      }
+
+      // async function kakaosearch(query) {
+      //   try {
+      //     //   const res = await axios.get('', {});
+      //     const res = await axios.get(
+      //       `https://dapi.kakao.com/v2/search/web?query=${query}&size=50`,
+      //       // `https://dapi.kakao.com/v2/search/web`
+      //       {
+      //         headers: {
+      //           Authorization: 'KakaoAK 8c75c94f88eb5e016627a0c69ca13924',
+      //         },
+      //         // params: {
+      //         //   query: query,
+      //         //   size: 50,
+      //         // },
+      //       }
+      //     );
+      //     console.log(res.data.documents);
+      //   } catch (error) {}
+      // }
+
+      function pagination(query, page) {
+        const pageView = document.querySelector('.pagination');
+        pageView.innerHTML = '';
+
+        let startpage = Math.floor((page - 1) / pagerCnt) * pagerCnt + 1;
+        // (5-1)/5
+        let endpage = startPage + pagerCnt - 1;
+        console.log(startpage, endpage);
+
+        let pageNum = '';
+        for (let i = startpage; i <= endpage; i++) {
+          // if (i == page) {
+          //   pageNum += "<li class='page-item active'>";
+          // } else {
+          //   pageNum += "<li class='page-item'>";
+          // }
+
+          pageNum += ` <li class="page-item ${
+            i == page ? 'active' : ''
+          }"><a class="page-link" href="#" onclick="searchData('${query}',${i})">${i}</a></li>
+          `;
+        }
+        pageView.innerHTML = pageNum;
+      }
+
+      // kakaosearch('손흥민', 2);
+    </script>
+  </body>
+</html>
