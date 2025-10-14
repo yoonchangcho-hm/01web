@@ -23,21 +23,22 @@
         name: '홍길동',
         age: 25,
       };
+
       console.log(person.name);
       console.log(person['age']);
 
       const { name, age } = { name: '이순신', age: 30 };
       console.log(name);
+      console.log(age);
 
       const user = {
-        name:'영희'
-        age:20
+        name: '영희',
+        age: 20,
       };
 
-      printer(user)
-      function printer({name,age}) {
-        console.log(name,age);
-
+      printer(user);
+      function printer({ name, age }) {
+        console.log(name, age);
       }
     </script>
   </body>
