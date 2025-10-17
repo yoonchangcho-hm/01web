@@ -1,34 +1,13 @@
 import React from 'react';
-import Button from './components/Button';
-import ViewComp from './components/ViewComp';
-import View01 from './components/View01';
+import Button from './components/state/Button';
 
 function App() {
-  const city = ['서울', '대전', '인천', '춘천'];
-  const city1 = ['서울', '대전', '인천', '춘천'];
-
   return (
     <div>
-      App
-      <Button title="글작성" color="red" />
-      <Button title="글보기" color="blue" />
-      <Button title="글수정" color="pink" />
-      <Button title="글수정" color="black" />
-      <ViewComp cityData={city} />
-      <ViewComp cityData={city1}></ViewComp>
-      {city.map((item, i) => {
-        return <View01 title={item}></View01>;
-      })}
-      <Han />
+      <h3>state</h3>
+      <Button title="글쓰기" color="red" width="200"></Button>
+      <Button></Button>
     </div>
-  );
-}
-
-function Han() {
-  return (
-    <>
-      <h2>han</h2>
-    </>
   );
 }
 

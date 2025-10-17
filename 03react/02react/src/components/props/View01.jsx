@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import Button from './props/Button';
 
 function View01(props) {
   return (
