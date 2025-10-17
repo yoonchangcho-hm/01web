@@ -1,53 +1,41 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import Button from './components/state/Button';
+import './App.css';
 
 function App() {
-  const test = 3;
-  const [count, setCount] = useState(1);
-  const [view, setView] = useState(false);
-  // const [count] = useState([
-  //   { city: '서울', cont: 'test' },
-  //   { city: '부산', cont: 'test' },
-  // ]);
-  // const [count] = useState(['서울', '부산']);
-  // const [allCity] = useState([{ city: '서울', cont: 'test' }]);
-  // console.log(count[0]);
-  // console.log(count[0].city);
+  const [isModal, setIsModal] = useState(false);
 
-  function han() {
-    setCount(count + 1);
-  }
+  const Modal = (
+    <div className="modal-overlay">
+      <div className="vModal">
+        <div className="title">
+          <h3>모달창</h3>
+          <div className="close-btn" onClick={() => setIsModal(false)}>
+            ×
+          </div>
+        </div>
+        <p className="modal-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
 
-  const han1 = function () {
-    setCount(count + 1);
-  };
-
-  const han2 = () => {
-    setCount(count + 1);
-  };
+        <div className="modal-btn" onClick={() => setIsModal(false)}>
+          <Button title="닫기" color="blue" />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
-    <>
-      <div>
-        <h3>state</h3>
-        <button onClick={han2}>{count}</button>
-        {/* <button onClick={()=>{setCount(count+1)}}>{count}</button> */}
-        <button
-          onClick={() => {
-            setCount(count + 1);
-          }}
-        >
-          {count}
-        </button>
-        <hr />
-        {test}
-        <Button title="글쓰기"></Button>
-        <Button title="글수정" color="red"></Button>
-        <Button title="글리스트" color="blue"></Button>
+    <div className="app">
+      <h3>모달창 만들기</h3>
 
-        {/* <a href="" className="btn btn-primary"></a> */}
+      {isModal && ReactDOM.createPortal(Modal, document.getElementById('root'))}
+
+      <div className="open-btn" onClick={() => setIsModal(true)}>
+        <Button title="창띄우기" />
       </div>
-    </>
+    </div>
   );
 }
 
