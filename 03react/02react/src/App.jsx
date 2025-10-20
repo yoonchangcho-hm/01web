@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import './tab.css';
 
+function Modal({ title, content, onClose }) {
+  return (
+    <div className="modal">
+      <div className="modal-content">
+        <h4>{title}</h4>
+        <p>{content}</p>
+        <button onClick={onClose}>닫기</button>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const data = [
     {
@@ -20,48 +32,38 @@ function App() {
     },
   ];
 
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(null);
 
-  const tabNum = (index) => {
+  const openModal = (index) => {
     setTab(index);
+  };
+
+  const closeModal = () => {
+    setTab(null);
   };
 
   return (
     <div>
-      Tab Menu ({tab})
-      <div>
-        <ul className="tab">
+      <h2>Tab Menu</h2>
+      <ul className="tab">
+        {data.map((item, index) => (
           <li
-            className={`han ${tab == 0 ? 'active' : ''}`}
-            // className={tab == 0 ? 'active' : ''}
-            onClick={() => {
-              tabNum(0);
-            }}
+            key={index}
+            className={`han ${tab === index ? 'active' : ''}`}
+            onClick={() => openModal(index)}
           >
-            tab1
+            tab{index + 1}
           </li>
-          <li
-            className={tab == 1 ? 'active' : ''}
-            onClick={() => {
-              tabNum(1);
-            }}
-          >
-            tab2
-          </li>
-          <li
-            className={tab == 2 ? 'active' : ''}
-            onClick={() => {
-              tabNum(2);
-            }}
-          >
-            tab3
-          </li>
-        </ul>
-        <div className="content">
-          <h4>{data[tab].title}</h4>
-          <p>{data[tab].content}</p>
-        </div>
-      </div>
+        ))}
+      </ul>
+
+      {tab !== null && (
+        <Modal
+          title={data[tab].title}
+          content={data[tab].content}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 }
