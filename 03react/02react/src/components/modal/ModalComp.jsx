@@ -1,9 +1,35 @@
 import React from 'react';
 
-function ModalComp({ modalClose }) {
+function ModalComp({ content, modalClose }) {
+  const style = {
+    wrap: {
+      width: '300px',
+      padding: '16px',
+      background: 'lightgray',
+      borderRadius: '10px',
+    },
+    header: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    text: {
+      background: 'skyblue',
+    },
+    close: {
+      padding: '20px',
+      cursor: 'pointer',
+    },
+  };
+
   return (
-    <div>
-      ModalComp
+    <div style={style.wrap}>
+      <div style={style.header}>
+        <h3>{content.title}</h3>
+        <div onClick={modalClose} style={style.close}>
+          X
+        </div>
+      </div>
+      <p style={style.text}>{content.vContent}</p>
       <button onClick={modalClose}>닫기</button>
     </div>
   );
