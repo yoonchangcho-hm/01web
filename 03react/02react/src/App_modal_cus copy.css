@@ -1,0 +1,50 @@
+.app {
+  text-align: center;
+  margin-top: 400px;
+}
+
+/* 모달 전체 배경 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex; /* flexbox 사용 */
+  justify-content: center; /* 가로 중앙 */
+  align-items: center; /* 세로 중앙 */
+  z-index: 1000;
+}
+
+/* 모달 박스 */
+.vModal {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* 제목 영역 */
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 닫기 버튼 */
+.close-btn {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 버튼 영역 */
+.modal-btn {
+  margin-top: 20px;
+  text-align: right;
+}
