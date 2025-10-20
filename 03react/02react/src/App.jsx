@@ -1,69 +1,72 @@
 import React, { useState } from 'react';
-import './tab.css';
-
-function Modal({ title, content, onClose }) {
-  return (
-    <div className="modal">
-      <div className="modal-content">
-        <h4>{title}</h4>
-        <p>{content}</p>
-        <button onClick={onClose}>닫기</button>
-      </div>
-    </div>
-  );
-}
+import ModalComp from './components/listView/ModalComp';
+const data = [
+  {
+    title: '안녕하세요1',
+    content:
+      '1Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit quasi pariatur maiores distinctio? Iusto officia atque labore, ratione voluptatum quam.',
+    name: '홍길동',
+    date: '2025-10-15,',
+  },
+  {
+    title: '안녕하세요2',
+    content:
+      '2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit quasi pariatur maiores distinctio? Iusto officia atque labore, ratione voluptatum quam.',
+    name: '홍길동',
+    date: '2025-10-15,',
+  },
+  {
+    title: '안녕하세요3',
+    content:
+      '3Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit quasi pariatur maiores distinctio? Iusto officia atque labore, ratione voluptatum quam.',
+    name: '홍길동',
+    date: '2025-10-15,',
+  },
+];
 
 function App() {
-  const data = [
-    {
-      title: '안녕하세요1',
-      content:
-        '1Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit quasi pariatur maiores distinctio? Iusto officia atque labore, ratione voluptatum quam.',
-    },
-    {
-      title: '안녕하세요2',
-      content:
-        '2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit quasi pariatur maiores distinctio? Iusto officia atque labore, ratione voluptatum quam.',
-    },
-    {
-      title: '안녕하세요3',
-      content:
-        '3Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit quasi pariatur maiores distinctio? Iusto officia atque labore, ratione voluptatum quam.',
-    },
-  ];
+  // 1. data 만들거나 정보 파악 ([{},{},{}])
+  // 2. 게시판리스트(array.map())
+  // 3. click event
+  // 4. useState(0)를 작성
+  // 5. modal디자인(컴포넌트생성)
+  // 6. useState(false) 작성
+  // 7. props에 대한 설계 (props, event)
+  // 8. 오류해결
 
-  const [tab, setTab] = useState(null);
+  const [num, setNum] = useState(0);
+  const [modal, setModal] = useState(false);
 
-  const openModal = (index) => {
-    setTab(index);
+  const clickFn = (index) => {
+    // alert('test');
+    setNum(index);
+    setModal(true);
   };
 
-  const closeModal = () => {
-    setTab(null);
+  const modalClose = () => {
+    setModal(false);
   };
 
   return (
     <div>
-      <h2>Tab Menu</h2>
-      <ul className="tab">
-        {data.map((item, index) => (
-          <li
-            key={index}
-            className={`han ${tab === index ? 'active' : ''}`}
-            onClick={() => openModal(index)}
-          >
-            tab{index + 1}
-          </li>
-        ))}
+      <h3>text list / ({num})</h3>
+      <ul>
+        {data.map((item, i) => {
+          // return <li oneClick={clickFn}>{item.title}</li>;
+          return (
+            <li
+              oneClick={() => {
+                clickFn(i);
+              }}
+            >
+              {item.title} / {item.name} / {item.date}
+            </li>
+          );
+        })}
       </ul>
-
-      {tab !== null && (
-        <Modal
-          title={data[tab].title}
-          content={data[tab].content}
-          onClose={closeModal}
-        />
-      )}
+      {modal ? (
+        <ModalComp num={num} data={data} modalClose={modalClose} />
+      ) : null}
     </div>
   );
 }
