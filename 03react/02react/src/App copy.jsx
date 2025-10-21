@@ -8,8 +8,14 @@ function App() {
 
   useEffect(() => {
     const fetchApi = async () => {
-      const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-      setPostData(res.data);
+      try {
+        const res = await axios.get(
+          'https://jsonplaceholder.typicode.com/posts'
+        );
+        setPostData(res.data);
+      } catch (error) {
+        console.error('API 요청 실패:', error);
+      }
     };
     fetchApi();
   }, []);
@@ -26,27 +32,22 @@ function App() {
 
   return (
     <div>
-      <h2>App</h2>
-      {postData &&
-        postData.map((item, i) => {
-          return (
-            <div
-              key={i}
-              onClick={() => {
-                openModal(item);
-              }}
-              style={{
-                cursor: 'pointer',
-                padding: '10px',
-                borderBottom: '1px solid #ccc',
-              }}
-            >
-              {item.id}. {item.title}
-            </div>
-          );
-        })}
+      <h2>게시글 목록</h2>
+      {postData.map((item) => (
+        <div
+          key={item.id}
+          onClick={() => openModal(item)}
+          style={{
+            cursor: 'pointer',
+            padding: '10px',
+            borderBottom: '1px solid #ccc',
+          }}
+        >
+          {item.id}. {item.title}
+        </div>
+      ))}
 
-      {/* 모달 영역 */}
+      {/* 모달 직접 구현 */}
       {modalOpen && selectedPost && (
         <>
           <div
