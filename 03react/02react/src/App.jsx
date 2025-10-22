@@ -1,79 +1,96 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import ModalComp from './components/post/ModalComp';
+import React, { useState } from 'react';
 
 function App() {
-  const [postData, setPostData] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [postItem, setPostItem] = useState(null);
+  const [text, setText] = useState('');
 
-  useEffect(() => {
-    const fetchApi = async () => {
-      try {
-        const res = await axios.get(
-          'https://jsonplaceholder.typicode.com/posts'
-        );
-        console.log(res.data);
-        setPostData(res.data);
-      } catch (error) {
-        console.error('데이터 가져오기 실패:', error);
-      }
-    };
-    fetchApi();
-  }, []);
+  const [form, setForm] = useState({ myname: '기본이름', email: '기본이메일' });
 
-  function postHandler(item) {
-    setPostItem(item);
-    setModalOpen(true);
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
+  const [checked, setChecked] = useState(false);
+  const [fruit, setFruit] = useState('apple');
+
+  // const form = {
+  //   myname: '',
+  //   email: '',
+  // };
+  // form['mylname'] =
+
+  // const arr = ["서울,"부산"]
+  //   arr [0]
+
+  function changeHandler(e) {
+    console.log(e.target.value);
+    setText(e.target.value);
   }
 
-  function modalClose() {
-    setPostItem(null);
-    setModalOpen(false);
+  function formHandler(e) {
+    console.log(e.target.name, e.target.value);
+    setForm({ ...form, [e.target.name]: e.target.value });
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h3>게시물 리스트</h3>
+    <div>
+      <h4>Form</h4>
+      <input type="text" onChange={changeHandler} />
+      <p>{text}</p>
 
-      {modalOpen && <ModalComp postItem={postItem} modalClose={modalClose} />}
+      <input
+        type="text"
+        name="myname"
+        placeholder="이름"
+        onChange={formHandler}
+      />
+      <br />
+      <input
+        type="text"
+        name="email"
+        placeholder="이메일"
+        onChange={formHandler}
+      />
+      <p>
+        {form.myname} / {form.email}
+      </p>
 
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {postData.length > 0 ? (
-          postData.map((item) => (
-            <li
-              key={item.id}
-              onClick={() => postHandler(item)}
-              style={{
-                padding: '10px',
-                marginBottom: '5px',
-                border: '1px solid #ccc',
-                cursor: 'pointer',
-              }}
-            >
-              {item.id}. {item.title}
-            </li>
-          ))
-        ) : (
-          <p>데이터가 없습니다.</p>
-        )}
-      </ul>
+      <input
+        type="number"
+        onChange={(e) => {
+          setNum1(Number(e.target.value));
+        }}
+      />
+      <input
+        type="number"
+        onChange={(e) => {
+          setNum2(Number(e.target.value));
+        }}
+      />
+      <p>{num1 * num2}</p>
+
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => {
+          setChecked(e.target.checked);
+        }}
+      />
+
+      {checked ? '체크됨' : '체크 안됨'}
+
+      <br />
+
+      <select
+        name="select"
+        onChange={(e) => {
+          setFruit(e.target.value);
+        }}
+      >
+        <option value="apple">사과</option>
+        <option value="banana">바나나</option>
+        <option value="grape">포도</option>
+      </select>
+      {fruit}
     </div>
   );
 }
 
 export default App;
-
-// 프로젝트생성 npm creat vit@latest projectname -> npm i -> code
-//mpm run dev
-//npm i axios / http//'https://jsonplaceholder.typicode.com/posts'
-//useEffect hook 사용 -> json data get -> console.log(res.data)
-//useState사용하여 state관리, json data -> state에 저장
-//저장 state 화면에 출력, 배열.map(()=>{})
-//리스트출력완료 후 modal component 제작
-//modal open 을 위한 state 생성
-//postItem state생성
-//modal comp에 props 속성 value 전달
-//modal comp 자료출력
-//modal open/close 를 위한 함수 제작
-//오류수정
