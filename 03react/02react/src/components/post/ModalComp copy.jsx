@@ -1,3 +1,22 @@
+// import React from 'react';
+
+// function ModalComp({ postItem, modalClose }) {
+//   return (
+//     <div className="modalItem">
+//       <div>
+//         <h3>
+//           {postItem.id}. {postItem.title}
+//         </h3>
+//         <div onClick={modalClose}>x</div>
+//       </div>
+//       <p>{postItem.body}</p>
+//       <button onClick={modalClose}>닫기</button>
+//     </div>
+//   );
+// }
+
+// export default ModalComp;
+
 import React from 'react';
 
 function ModalComp({ postItem, modalClose }) {
@@ -15,10 +34,9 @@ function ModalComp({ postItem, modalClose }) {
         border: '1px solid #ccc',
         boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
         zIndex: 1000,
-        width: '400px',
       }}
     >
-      <h4>게시물 상세</h4>
+      <h4>📌 게시물 상세</h4>
       <p>
         <strong>ID:</strong> {postItem.id}
       </p>
@@ -32,7 +50,7 @@ function ModalComp({ postItem, modalClose }) {
         onClick={modalClose}
         style={{
           marginTop: '10px',
-          padding: '8px 12px',
+          padding: '5px 10px',
           backgroundColor: '#007bff',
           color: '#fff',
           border: 'none',
