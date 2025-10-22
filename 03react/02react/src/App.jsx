@@ -1,86 +1,76 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import ModalComp from './components/post/ModalComp';
 
 function App() {
+  //*
+  //프로젝트생성 npm creat vit@latest projectname -> npm i -> code
+  //mpm run dev
+  //npm i axios / http//'https://jsonplaceholder.typicode.com/posts'
+  //useEffect hook 사용 -> json data get -> console.log(res.data)
+  //useState사용하여 state관리, json data -> state에 저장
+  //저장 state 화면에 출력, 배열.map(()=>{})
+  //리스트출력완료 후 modal component 제작
+  //modal open 을 위한 state 생성
+  //postItem state생성
+  //modal comp에 props 속성 value 전달
+  //modal comp 자료출력
+  //modal open/close 를 위한 함수 제작
+  //오류수정
+
   const [postData, setPostData] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [postItem, setPostItem] = useState(null);
 
   useEffect(() => {
     const fetchApi = async () => {
-      const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-      setPostData(res.data);
+      try {
+        const res = await axios.get(
+          'https://jsonplaceholder.typicode.com/posts'
+        );
+        console.log(res.data);
+        setPostData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchApi();
   }, []);
 
-  const openModal = (item) => {
-    setSelectedPost(item);
+  function postHandler(item) {
+    setPostItem(item);
     setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setSelectedPost(null);
+  }
+  function modalClose() {
+    setPostItem(null);
     setModalOpen(false);
-  };
-
+  }
   return (
     <div>
-      <h2>App</h2>
-      {postData &&
-        postData.map((item, i) => {
-          return (
-            <div
-              key={i}
-              onClick={() => {
-                openModal(item);
-              }}
-              style={{
-                cursor: 'pointer',
-                padding: '10px',
-                borderBottom: '1px solid #ccc',
-              }}
-            >
-              {item.id}. {item.title}
-            </div>
-          );
-        })}
-
-      {/* 모달 영역 */}
-      {modalOpen && selectedPost && (
-        <>
-          <div
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              zIndex: 999,
-            }}
-            onClick={closeModal}
-          />
-          <div
-            style={{
-              position: 'fixed',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              backgroundColor: '#fff',
-              padding: '20px',
-              borderRadius: '8px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
-              zIndex: 1000,
-              width: '400px',
-            }}
-          >
-            <h3>{selectedPost.title}</h3>
-            <p>{selectedPost.body}</p>
-            <button onClick={closeModal}>닫기</button>
-          </div>
-        </>
-      )}
+      <h3>post</h3>
+      {modalOpen ? (
+        <ModalComp postItem={postItem} modalClose={modalClose} />
+      ) : null}
+      {postItem?.id}
+      <ul>
+        {/* {posetData && postData.map()} */}
+        {/* {postData.length > 0 ? postData.map(()=>{}) : !postData && <p>데이터가 없습니다.</p>} */}
+        {postData.length > 0
+          ? postData.map((item, i) => {
+              console.log(item);
+              return (
+                <li
+                  key={i}
+                  onClick={() => {
+                    postHandler(item); // function로 전달
+                  }}
+                >
+                  {item.id}. {item.title}
+                </li>
+              );
+            })
+          : !postData && <p>데이터가 없습니다.</p>}
+      </ul>
     </div>
   );
 }
