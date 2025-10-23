@@ -68,3 +68,6 @@ export default App;
 //api데이터 가고오는
 // $.ajax()/fetch api(json파일로parse)
 //*axios(npm axios install)
+
+//const [data,setData] =useState([])
+//useEffect(function(){},[])
