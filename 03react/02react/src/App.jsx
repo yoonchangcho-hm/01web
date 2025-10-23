@@ -1,51 +1,25 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [form, setForm] = useState({
-    name: '홍길동',
-    email: 'test@teat.com',
-    id: 'id',
-    agree: false,
-  });
-  const eventHandler = (e) => {
-    // function eventHandler() {}
-    console.log(e.target.value);
-    const { name, value, type, checked } = e.target;
-    console.log(name, value);
-    setForm({ ...form, [name]: type == 'checkbox' ? checked : value });
-
-    // const {name,value,type,checked}= e.target
-    // setForm({ ...form, [name]: });
-
-    // setForm({ name: '홍길동', email: 'test@teat.com',['name']: e.target.value });
-  };
-
-  // const arr = ['부산', '서울'];
-  // arr[1];
-
-  // const han = { name: 'test', content: 'test1' };
-  // han.name;
-  // han['name'];
-
+  const [email, setEmail] = useState('');
+  const isVaild = email.includes('@'); // true, false
   return (
     <div>
-      <h3>input</h3>
-      <p>
-        {form.name} / {form.email} / {form.id} /{' '}
-        {form.agree && <span>체크</span>}
+      <h3>유효성 검사 includes</h3>
+      <input
+        type="text"
+        name="email"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <p>{email}</p>
+      <p style={{ color: isVaild ? 'green' : 'red' }}>
+        {isVaild ? '올바른 이메일 입니다.' : '올바른 이메일이 아닙니다.'}
+        {/* {!isVaild ? '올바른 이메일 입니다.' : '올바른 이메일이 아닙니다.' : ''} */}
       </p>
-      <input type="text" name="name" onChange={eventHandler} />
-      <br />
-      <input type="text" name="email" onChange={eventHandler} />
-      <br />
-      <input type="text" name="id" onChange={eventHandler} />
-      <br />
-      <input type="checkbox" name="agree" onChange={eventHandler} />
-      <br />
     </div>
   );
 }
 
 export default App;
-
-// sass
