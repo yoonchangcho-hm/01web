@@ -6,46 +6,44 @@ function App() {
     userid: '',
     useremail: '',
   });
-
-  const [errors, setErrors] = useState({});
-
   const eventHandler = (e) => {
     const { name, type, value, checked } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-  const validate = () => {
-    const newError = {
-      name: '이름을 입력하세요',
-      userid: '아이디를 입력하세요',
-    };
-
-    // if (!formData.name.trim()) {
-    //   alert('이름을 입력하세요');
-    // }
-
-    // if (!formData.userid.trim()) {
-    //   alert('아이디를 입력하세요');
-    // } else if (formData.userid.length < 4) {
-    //   alert('아이디를 4자 이상어야 합니다.');
-    // }
-
-    // if (!formData.useremail.trim()) {
-    //   alert('이메일을 입력하세요');
-    //   // } else if (!formData.useremail.includes('@')) {
-    //   //   alert('이메일 형식이 아닙니다.');
-    // } else if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(formData.useremail)) {
-    //   alert('이메일 형식이 아닙니다.');
-    // }
-    return newError;
   };
 
   const submitHandler = (e) => {
     // alert('회원가입완료');
     e.preventDefault();
-    const nError = validate();
-    setErrors(nError);
-  };
 
+    if (!formData.name.trim()) {
+      alert('이름을 입력하세요');
+    }
+
+    if (!formData.userid.trim()) {
+      alert('아이디를 입력하세요');
+    } else if (formData.userid.length < 4) {
+      alert('아이디를 4자 이상어야 합니다.');
+    }
+
+    if (!formData.useremail.trim()) {
+      alert('이메일을 입력하세요');
+      // } else if (!formData.useremail.includes('@')) {
+      //   alert('이메일 형식이 아닙니다.');
+
+      // / … / → 정규식의 시작과 끝
+      // ^ → 문자열의 시작
+      // $ → 문자열의 끝
+      // [...] → 문자 집합 (대괄호 안의 어떤 문자든 OK)
+      // [^...] → 괄호 안의 문자들은 제외
+      // (^가 대괄호 안에 있을 때는 “부정(not)”의 의미)
+      // \s → 공백 문자 (space, tab, 줄바꿈 등)
+      // @, . → 각각 “@”, “.”라는 문자 그대로
+      // + → 앞의 패턴이 1개 이상 반복
+      //  /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    } else if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(formData.useremail)) {
+      alert('이메일 형식이 아닙니다.');
+    }
+  };
   return (
     <div>
       <div className="container">
@@ -116,8 +114,7 @@ function App() {
           </div>
         </form>
       </div>
-      <div>{JSON.stringify(formData)}</div>
-      <div>{JSON.stringify(errors)}</div>
+      {JSON.stringify(formData)}
     </div>
   );
 }
