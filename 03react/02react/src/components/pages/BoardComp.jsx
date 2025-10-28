@@ -7,7 +7,7 @@ function BoardComp() {
   const { name1, age1 } = useParams();
 
   //query params  //board?han=test&name=hong
-  const [searchParams] = useSearchParams(); //http://localhost:5173/board?name=han
+  const [searchParams] = useSearchParams(); //http://localhost:5173/board?name=han&age=10
   const name = searchParams.get('name');
   const age = searchParams.get('age');
 
