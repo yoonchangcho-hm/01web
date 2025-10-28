@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom';
 import './APP.css';
-import HomeComp from './components/pages/HomeComp';
-import AboutComp from './components/pages/AboutComp';
-import BoardComp from './components/pages/BoardComp';
+import HomeComp from './components/pages/home/HomeComp';
+import AboutComp from './components/pages/about/AboutComp';
+import BoardComp from './components/pages/board/BoardComp';
 
 function App() {
   return (
@@ -14,21 +14,24 @@ function App() {
             LOGO
           </Link>
         </h1>
-        <ul className="d-flex gap-3">
+        <ul className="d-flex gap-3 menu">
           <li className="d-flex align-items-center">
-            <Link to="/" className="nav-link">
+            {/* <Link to="/" className="nav-link">
               home
-            </Link>
+            </Link> */}
+            <NavLink to="/" className="nav-link">
+              home
+            </NavLink>
           </li>
           <li className="d-flex align-items-center">
-            <Link to="/about" className="nav-link">
+            <NavLink to="/about" className="nav-link">
               about
-            </Link>
+            </NavLink>
           </li>
           <li className="d-flex align-items-center">
-            <Link to="/board" className="nav-link">
+            <NavLink to="/board" className="nav-link">
               board
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -37,6 +40,7 @@ function App() {
         <Route path="/about/*" element={<AboutComp />}></Route>
         <Route path="/board/*" element={<BoardComp />}></Route>
       </Routes>
+      <div className="container">footer</div>
     </BrowserRouter>
   );
 }

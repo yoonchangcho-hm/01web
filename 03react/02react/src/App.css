@@ -4,3 +4,13 @@ li {
   padding: 0;
   list-style: none;
 }
+
+.menu li a.active {
+  /* background: pink; */
+  font-weight: bold;
+  color: blue;
+}
+
+.submenu a.active {
+  font-weight: bold;
+}

@@ -12,7 +12,7 @@ function BoardComp() {
         style={{ width: '100%', height: '200px' }}
         className="d-flex justify-content-center align-items-center bg-info rounded mb-3"
       >
-        About
+        Board
       </div>
       <div className="d-flex justify-content-center gap-3 ">
         <Link to="../board/list" className="nav-link">

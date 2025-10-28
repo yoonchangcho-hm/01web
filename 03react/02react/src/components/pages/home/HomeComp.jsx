@@ -1,7 +1,7 @@
 import React from 'react';
 
 function HomeComp() {
-  return <div>HomeComp</div>;
+  return <div className="container">HomeComp</div>;
 }
 
 export default HomeComp;
