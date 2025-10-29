@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ListComp from './ListComp';
 import WriteComp from './WriteComp';
 import ViewComp from './ViewComp';
 import ModifyComp from './ModifyComp';
 import { Link, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+
+const API = 'https://jsonplaceholder.typicode.com/posts';
 
 function BoardComp() {
+  useEffect(() => {
+    const fetch = async () => {
+      const { data } = await axios.get(API);
+      console.log(data);
+    };
+    fetch();
+  }, []);
+
   return (
     <div className="container">
       <div
