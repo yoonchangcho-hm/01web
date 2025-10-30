@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
 import ListComp from './ListComp';
 import WriteComp from './WriteComp';
 import ViewComp from './ViewComp';
 import ModifyComp from './ModifyComp';
-import { Link, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 
 const API = 'https://jsonplaceholder.typicode.com';
