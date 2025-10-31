@@ -1,47 +1,23 @@
-import React from 'react';
-import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom';
-import './APP.css';
-import HomeComp from './components/pages/home/HomeComp';
-import AboutComp from './components/pages/about/AboutComp';
-import BoardComp from './components/pages/board/BoardComp';
+import React, { useState } from 'react';
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  function addHandler() {
+    // setCount(count + 5);
+    // setCount(count + 4);
+
+    setCount((prev) => prev + 1);
+    setCount((prev) => prev + 1);
+    setCount((prev) => prev + 1);
+  }
+
   return (
-    <BrowserRouter>
-      <div className="container d-flex justify-content-between">
-        <h1>
-          <Link to="/" className="nav-link">
-            LOGO
-          </Link>
-        </h1>
-        <ul className="d-flex gap-3 menu">
-          <li className="d-flex align-items-center">
-            {/* <Link to="/" className="nav-link">
-              home
-            </Link> */}
-            <NavLink to="/" className="nav-link">
-              home
-            </NavLink>
-          </li>
-          <li className="d-flex align-items-center">
-            <NavLink to="/about" className="nav-link">
-              about
-            </NavLink>
-          </li>
-          <li className="d-flex align-items-center">
-            <NavLink to="/board" className="nav-link">
-              board
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route path="/" element={<HomeComp />}></Route>
-        <Route path="/about/*" element={<AboutComp />}></Route>
-        <Route path="/board/*" element={<BoardComp />}></Route>
-      </Routes>
-      <div className="container">footer</div>
-    </BrowserRouter>
+    <div>
+      App
+      <p>{count}</p>
+      <button onClick={addHandler}>증가</button>
+    </div>
   );
 }
 

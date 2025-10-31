@@ -11,7 +11,27 @@ function App() {
 
   const eventHandler = (e) => {
     const { name, type, value, checked } = e.target;
-    setFormData({ ...formData, [name]: value });
+    console.log(e.target);
+
+    // e.target <input type=text name="userid" value="hanyong5">
+    // e.target {type:"text",name="userid", value="hanyong5"}
+    // const {name,value} = {type:"text",name="userid", value="hanyong5"}
+
+    // setFormData({ ...formData, [name]: value });
+
+    // #1
+    // setFormData((prev)=>{
+    //   return{
+    //   ...prev,[name]:value
+    //  }
+    // })
+
+    // #2
+    // setFormData((prev) => {
+    //   return { ...prev, [name]: value };
+    // });
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validate = () => {
