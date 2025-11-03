@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { createContext } from 'react';
+import ParentComp from './components/context/ParentComp';
+// import { UserProvider } from './context/UserContext';
+
+// const UserContext = createContext();
+
+// function App() {
+//   return (
+//     <UserContext.Provider valuew="홍길동">
+//       <ParentComp />
+//     </UserContext.Provider>
+//   );
+// }
+
+import { UserProvider } from './context/UserContext';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  function addHandler() {
-    // setCount(count + 5);
-    // setCount(count + 4);
-
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
-  }
-
   return (
-    <div>
-      App
-      <p>{count}</p>
-      <button onClick={addHandler}>증가</button>
-    </div>
+    <UserProvider>
+      <ParentComp />
+    </UserProvider>
   );
 }
 
