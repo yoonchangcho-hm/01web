@@ -11,8 +11,10 @@ function App() {
   return (
     <div style={{ border: '1px solid #000' }} className="p-3">
       <h3>Context Api</h3>
+
       {/* <LoginContext.Provider></LoginContext.Provider> */}
       {/* <UseContext.Provider value={{view:view, setView:setView}}> */}
+
       <UseContext.Provider value={{ view, setView }}>
         <ChildComp />
       </UseContext.Provider>
@@ -42,8 +44,8 @@ function ChildOneComp() {
   // const view = useContext(UseContext);
   // *** const { view, setView } = useContext(UseContext); // {view:view, setView:setView}
   // const stateView = useContext(UseContext);  // 사용시 stateView.view stateview.setview
-  const view = useContext(UseContext).view;
-  const setView = useContext(UseContext).setView;
+  // const view = useContext(UseContext).view;
+  // const setView = useContext(UseContext).setView;
 
   return (
     <div style={{ border: '1px solid #000' }} className="p-3">
