@@ -4,12 +4,16 @@ function App() {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('이미지 파일업로드');
   const [text, setText] = useState('');
+  const [preview, setPreview] = useState('');
 
   const fileChangeHandler = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     const imageFile = e.target.files[0];
+    console.log(URL.createObjectURL(imageFile));
+
     setFileName(imageFile.name);
     setFile(imageFile);
+    setPreview(URL.createObjectURL(imageFile));
   };
 
   const submitHandler = (e) => {
@@ -49,6 +53,7 @@ function App() {
           />
         </div>
         <button type="submit">전송</button>
+        {preview && <img src={preview} width={200} />}
       </form>
     </div>
   );
