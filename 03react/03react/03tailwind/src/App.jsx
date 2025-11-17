@@ -52,7 +52,7 @@ function App() {
               />
             </div>
             <button className="w-full flex justify-center items-center gap-3 rounded-lg bg-info text-white font-bold py-2 hover:text-gray-700 transition">
-              <div className=" w-5 h-5 bg-amber-300 animate-spin "></div>로그인
+              <div className=" w-3 h-3 bg-amber-300 animate-spin "></div>로그인
             </button>
             <p className="text-sm text-center text-gray-500">
               Lorem ipsum dolor sit amet.
