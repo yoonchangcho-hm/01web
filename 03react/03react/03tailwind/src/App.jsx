@@ -1,19 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 function App() {
+  const [boardData, setBoardData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get('http://localhost:8080/api/board');
+      console.log(data);
+      setBoardData(data);
+    };
+    fetchData();
+  }, []);
   return (
-    <>
-      <div className="container bg-amber-300 mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">로고</h1>
-        <ul className="items-center gap-2 hidden md:flex">
-          <li>menu1</li>
-          <li>menu1</li>
-          <li>menu1</li>
-          <li>menu1</li>
-        </ul>
-        <div className="w-5 h-5 block md:hidden bg-gray-400"></div>
-      </div>
-    </>
+    <div>
+      {boardData.map((item, i) => {
+        return (
+          <div key={i}>
+            {item.id} / {item.title} / {item.content}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
